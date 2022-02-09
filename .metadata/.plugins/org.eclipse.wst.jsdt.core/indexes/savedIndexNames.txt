@@ -1,0 +1,5 @@
+INDEX VERSION 1.4+C:\Users\Muryllo\Desktop\MSES_Trabalho\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+100288827.index
+4260141712.index
+1937074158.index
+3677843451.index

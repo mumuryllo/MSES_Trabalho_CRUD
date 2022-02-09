@@ -1,0 +1,8 @@
+package br.Model;
+
+public class Carros {
+
+	private int id;
+	private int ano;
+	private String modelo;
+}
