@@ -1,0 +1,34 @@
+package br.Model;
+
+public class Carros {
+    
+	private Integer id;
+	private String ano;
+	private String modelo;
+	private boolean pronto;
+	
+	
+	public String getAno() {
+		return ano;
+	}
+	public void setAno(String ano) {
+		this.ano = ano;
+	}
+	public String getModelo() {
+		return modelo;
+	}
+	public void setModelo(String modelo) {
+		this.modelo = modelo;
+	}
+	public boolean isPronto() {
+		return pronto;
+	}
+	public void setPronto(boolean pronto) {
+		this.pronto = pronto;
+	}
+	
+	
+	
+
+
+}

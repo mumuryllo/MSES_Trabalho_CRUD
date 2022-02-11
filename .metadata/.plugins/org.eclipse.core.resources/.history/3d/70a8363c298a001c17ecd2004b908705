@@ -1,0 +1,95 @@
+package Dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import br.Model.*;
+
+public class CarrosDAO implements ICarros{
+	
+	
+	private Connection connection;
+	
+	public CarrosDAO() throws ClassNotFoundException, SQLException {
+		IGenericDAO genDao = new GenericDAO();
+		connection =  genDao.getConnection();	
+	}
+	
+
+
+
+
+	public List<User> searchUsers() throws SQLException {
+		List<User> listUsers = new ArrayList <User>();
+		String sql = "SELECT id_users, name, email, country FROM USERS";
+		PreparedStatement ps = connection.prepareStatement(sql);
+		ResultSet rs = ps.executeQuery();
+		while(rs.next()) {
+			User user = new User();
+			user.setId(rs.getInt("id_users"));
+			user.setNome(rs.getString("name"));
+			user.setEmail(rs.getString("email"));
+			user.setPais(rs.getString("country"));
+			listUsers.add(user);
+		}
+		rs.close();
+		ps.close();
+		return listUsers;
+	}//end searchUsers
+
+
+	@Override
+	public void InsertCarros(Carros carro) throws SQLException {
+		// TODO Auto-generated method stub
+		String sql = "INSERT  INTO  carros  (Ano, Modelo, ) VALUES ( ?, ?)";
+		PreparedStatement ps = connection.prepareStatement(sql);
+		ps.setString(1, carro.getAno());
+		ps.setString(2, carro.getModelo());	
+		ps.execute();
+		ps.close();
+		
+	}
+
+
+	@Override
+	public void UpdateCarros(Carros carro) throws SQLException {
+		String sql = "UPDATE  SET Ano = ?, Modelo = ? WHERE ID = ?";
+		PreparedStatement ps = connection.prepareStatement(sql);
+		ps.setString(1, carro.getAno());
+		ps.setString(2, carro.getModelo());
+		ps.setInt(3, carro.getId());
+		ps.execute();
+		ps.close();
+		
+	}
+
+
+	@Override
+	public void DeleteCarros(Carros carro) throws SQLException {
+		String sql = "DELETE FROM carros WHERE ID = ? ";
+		PreparedStatement ps = connection.prepareStatement(sql);
+		ps.setInt(1, carro.getId());
+		ps.execute();
+		ps.close();
+				
+		
+	}
+
+
+
+
+
+	@Override
+	public List<Carros> SearchCarros() throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	
+	
+}//end userDAO

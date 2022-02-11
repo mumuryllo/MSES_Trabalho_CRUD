@@ -1,0 +1,16 @@
+package Dao;
+
+import java.sql.SQLException;
+import java.util.List;
+
+import br.Model.*;
+
+public interface ICarros {
+	public void insertCarros (Carros carro) throws SQLException;
+	public void updateCarros(Carros carro) throws SQLException;
+	public void deleteCarros(Carros carro) throws SQLException;
+	public Carros searchCarros(Carros carro)throws SQLException;
+	public List<Carros> searchUsers ()throws SQLException;
+
+}
+

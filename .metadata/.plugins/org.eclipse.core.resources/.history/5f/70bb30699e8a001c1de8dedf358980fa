@@ -1,0 +1,21 @@
+package br.Model;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class CarrosCRUD {
+
+	private static int AUTO_INCREMENT =0;
+	private List<Carros> todos =new ArrayList<>();
+	
+	public void create(Carros carros) {
+		AUTO_INCREMENT++;
+		carros.setId(AUTO_INCREMENT);
+		Todos.add(carros);
+	}
+	
+	public List<Carros> read(){
+		return todos;
+	}
+	
+}

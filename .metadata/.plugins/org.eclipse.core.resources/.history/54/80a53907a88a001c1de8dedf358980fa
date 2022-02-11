@@ -1,0 +1,76 @@
+
+
+import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import br.Model.Carros;
+import br.Model.CarrosCRUD;
+
+/**
+ * Servlet implementation class Controller
+ */
+@WebServlet("/Controller")
+public class Controller extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	private 	CarrosCRUD carros = new CarrosCRUD();
+	Carros carro = new Carros();
+	
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public Controller() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	String Ano= request.getParameter("Ano");
+	String action= request.getParameter("action");
+	String Modelo= request.getParameter("Modelo");
+	
+
+	if(action.equals("create")) {
+		carros.create(carro);
+	}  
+	
+	else if(action.equals("read")) {
+		List<Carros> todos = carros.read();
+		request.setAttribute("todos", todos);
+	}
+	
+	if(action == null) {
+		action="read";
+	}
+	
+	
+	
+
+	carro.setAno(Ano);
+	carro.setModelo(Modelo);
+	carro.setPronto(false);
+	RequestDispatcher rd= request.getRequestDispatcher("index.jsp");
+	rd.forward(request, response);
+	 
+    
+	
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+}

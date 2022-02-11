@@ -2,12 +2,14 @@
 <section name="Workbench">
 	<section name="wizardPage">
 		<list key="groupId">
+			<item value="admPanel"/>
 			<item value="MSESTrabalho"/>
 			<item value="MSESExercicio7"/>
 		</list>
 		<list key="name">
 		</list>
 		<list key="artifactId">
+			<item value="admPanel"/>
 			<item value="MSESTrabalho"/>
 			<item value="MSESExercicio7"/>
 		</list>

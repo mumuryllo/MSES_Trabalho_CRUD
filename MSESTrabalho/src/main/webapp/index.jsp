@@ -15,7 +15,7 @@
     <h1 class="title">Lista de Carros</h1>
     <hr>
 	<form action="Controller" method="post">
-		<button class="btn btn-primary"type="submit" name="option" value="insertForm">Cadastrar Usuário</button>
+		<button class="btn btn-primary"type="submit" name="option" value="insertForm">Cadastrar Carros</button>
 	</form>
 	
 		<table class="table">
@@ -24,23 +24,18 @@
 					<th scope="col">Id</th>
 					<th scope="col">Ano</th>
 					<th scope="col">Modelo</th>
-					<th scope="col">idIPVA</th>
-					<th scope="col">AnoIPVA</th>
-					<th scope="col">Situação</th>
-					<th scope="col">Ações</th>
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach var="usuario" items="${listUser}">
+				<c:forEach var="carro" items="${listCarros}">
 					<tr>
-						<form action="CRUDController" method="post">
+						<form action="Controller" method="post">
 							<td>
-								<c:out value="${usuario.id}"/>
-								<input type="hidden" name="id" value="${usuario.id}"/>
+								<c:out value="${carro.id}"/>
+								<input type="hidden" name="id" value="${carro.id}"/>
 							</td>
-							<td><c:out value="${usuario.nome}"/></td>
-							<td><c:out value="${usuario.email}"/></td>
-							<td><c:out value="${usuario.pais}"/></td>
+							<td><c:out value="${carro.ano}"/></td>
+							<td><c:out value="${carro.modelo}"/></td>
 							<td><button class="btn btn-primary" type="submit" name="option" value="delete" style="margin-right: 10px;" >Deletar</button>
                                 <button class="btn btn-primary" type="submit" name="option" value="updateForm">Atualizar</button>
                             </td>

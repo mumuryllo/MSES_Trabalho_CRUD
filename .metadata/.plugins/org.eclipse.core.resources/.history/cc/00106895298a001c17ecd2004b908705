@@ -1,0 +1,91 @@
+package Dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import br.Model.*;
+
+public class CarrosDAO implements ICarros{
+	
+	
+	private Connection connection;
+	
+	public CarrosDAO() throws ClassNotFoundException, SQLException {
+		IGenericDAO genDao = new GenericDAO();
+		connection =  genDao.getConnection();	
+	}
+	
+
+
+
+
+
+
+
+	@Override
+	public void InsertCarros(Carros carro) throws SQLException {
+		// TODO Auto-generated method stub
+		String sql = "INSERT  INTO  carros  (Ano, Modelo, ) VALUES ( ?, ?)";
+		PreparedStatement ps = connection.prepareStatement(sql);
+		ps.setString(1, carro.getAno());
+		ps.setString(2, carro.getModelo());	
+		ps.execute();
+		ps.close();
+		
+	}
+
+
+	@Override
+	public void UpdateCarros(Carros carro) throws SQLException {
+		String sql = "UPDATE  SET Ano = ?, Modelo = ? WHERE ID = ?";
+		PreparedStatement ps = connection.prepareStatement(sql);
+		ps.setString(1, carro.getAno());
+		ps.setString(2, carro.getModelo());
+		ps.setInt(3, carro.getId());
+		ps.execute();
+		ps.close();
+		
+	}
+
+
+	@Override
+	public void DeleteCarros(Carros carro) throws SQLException {
+		String sql = "DELETE FROM carros WHERE ID = ? ";
+		PreparedStatement ps = connection.prepareStatement(sql);
+		ps.setInt(1, carro.getId());
+		ps.execute();
+		ps.close();
+				
+		
+	}
+
+
+
+
+
+	@Override
+	public List<Carros> SearchCarros() throws SQLException {
+		List<Carros> listCarros = new ArrayList <Carros>();
+		String sql = "SELECT ID, Ano, Modelo  FROM carros";
+		PreparedStatement ps = connection.prepareStatement(sql);
+		ResultSet rs = ps.executeQuery();
+		while(rs.next()) {
+			Carros carros = new Carros(0);
+			carros.setId(rs.getInt("ID"));
+			carros.setAno("Ano");
+			carros.setModelo("Modelo");
+			listCarros.add(carros);
+		}
+		rs.close();
+		ps.close();
+		return listCarros;
+	}
+
+
+	
+	
+}//end userDAO

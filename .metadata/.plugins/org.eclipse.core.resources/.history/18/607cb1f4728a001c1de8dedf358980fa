@@ -1,0 +1,125 @@
+import java.io.IOException;
+import java.sql.SQLException;
+
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import Dao.CarrosDAO;
+import br.Model.Carros;
+
+
+
+
+@WebServlet("/Controller")
+public class Controller extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	private CarrosDAO cont;
+
+       
+    public Controller() throws ClassNotFoundException, SQLException {
+    	super();
+ 
+        this.cont = new CarrosDAO();
+    }
+
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		
+		try {
+			doPost(request, response);
+		} catch (ServletException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		String option = request.getParameter("option");
+		if (option == null) {
+			option = "qualquer coisa";
+		}
+		switch(option) {
+			case ("update"):
+			try {
+				updateUser(request, response);
+			} catch (ServletException | IOException | SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			break;
+			case ("delete"):
+				try {
+					deleteUser(request, response);
+				} catch (ServletException | IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			break;
+			case ("insert"):
+				try {
+					insertUser(request, response);
+				} catch (ServletException | IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			break;
+			default:
+				selectAllUsers(request, response);
+		}
+	}
+	
+	private void insertUser(HttpServletRequest tomate, HttpServletResponse alface) throws ServletException, IOException, SQLException{
+		String AnoBack = tomate.getParameter("Ano");
+		String ModelolBack = tomate.getParameter("Modelo");
+		if ((AnoBack != null) && (ModelolBack != null)) {
+			Object nomeBack = null;
+			if (!nomeBack.equals("")){
+				Carros carros = new Carros(AnoBack, ModelolBack);
+				this.cont.InsertCarros(carros);
+			}
+		}
+		alface.sendRedirect("Controller");
+	}
+	
+	
+	private void deleteUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+		
+		String idBack = request.getParameter("id");
+		if (idBack != null) {
+			Integer id = Integer.parseInt(idBack);
+			this.cont.DeleteCarros(null);
+		}
+		response.sendRedirect("Controller");
+	}
+	
+	private void updateUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+		ServletRequest tomate = null;
+		String AnoBack = tomate.getParameter("Ano");
+		String ModelolBack = tomate.getParameter("Modelo");
+		String idBack = request.getParameter("id");
+		if ((AnoBack != null) && (ModelolBack != null) && (idBack != null)) {
+		
+				Integer id = Integer.parseInt(idBack);
+				Carros carros = new Carros(AnoBack, ModelolBack);
+				carros.setId(id);
+				this.cont.UpdateCarros(carros);
+			}
+		response.sendRedirect("Controller");
+		}
+	
+	
+	}
+
