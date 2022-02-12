@@ -6,6 +6,7 @@
 	</section>
 	<section name="WORKBENCH_SETTINGS">
 		<list key="ENABLED_TRANSFERS">
+			<item value="org.eclipse.ui.preferences"/>
 		</list>
 	</section>
 	<section name="ExternalProjectImportWizard">
@@ -15,6 +16,7 @@
 		<item key="WizardProjectsImportPage.STORE_CLOSE_CREATED_PROJECTS_ID" value="false"/>
 		<item key="WizardProjectsImportPage.STORE_HIDE_CONFLICTING_PROJECTS_ID" value="false"/>
 		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="C:\Users\Muryllo\Desktop\MSES_EX_Banco_De_Dados"/>
 			<item value="C:\Users\Muryllo\Documents\adm_panel"/>
 			<item value="C:\Users\Muryllo\Desktop\Nova pasta"/>
 		</list>

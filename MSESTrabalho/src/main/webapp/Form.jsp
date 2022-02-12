@@ -69,8 +69,8 @@
 			</c:when>
 			<c:otherwise>
 				<input type="hidden" name="id" value="${carros.id}"/>
-				<label class="form-label">Ano:</label><input class="form-control" type="text" name="name" value="${carros.ano}" required/>
-				<label class="form-label">Modelo:</label><input class="form-control" type="text" name="email" value="${carros.modelo}"/>
+				<label class="form-label">Ano:</label><input class="form-control" type="text" name="ano" value="${carros.ano}" required/>
+				<label class="form-label">Modelo:</label><input class="form-control" type="text" name="modelo" value="${carros.modelo}"/>	
 			    <br>
 				<button class="btn btn-primary" type="submit" name="option" value="update">Atualizar</button>
 			</c:otherwise>

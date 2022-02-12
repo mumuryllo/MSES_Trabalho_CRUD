@@ -22,6 +22,7 @@
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="br.Model.CarrosCRUD"/>
     <fullyQualifiedTypeName name="java.util.List"/>
-    <fullyQualifiedTypeName name="br.Model.Carros"/>
     <fullyQualifiedTypeName name="java.io.IOException"/>
+    <fullyQualifiedTypeName name="br.Model.CarrosDao"/>
+    <fullyQualifiedTypeName name="br.Model.Carros"/>
 </qualifiedTypeNameHistroy>

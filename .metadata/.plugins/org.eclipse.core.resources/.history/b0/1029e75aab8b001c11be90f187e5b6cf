@@ -1,0 +1,55 @@
+package br.Model;
+
+import java.util.ArrayList;
+
+
+public class Container {
+
+	private ArrayList<Carros> CarrosList;
+	private Integer idSequence;
+	
+	public Container() {
+		super();
+		CarrosList = new ArrayList<Carros>();
+		this.idSequence = 1;
+	}	
+	
+	public void insertC(Carros carros) {
+		carros.setId(idSequence);
+		this.CarrosList.add(carros);
+		this.idSequence++;
+	}	
+	
+	public ArrayList<Carros> selectAllC(){
+		return this.CarrosList;
+	}
+	
+	public void deleteC(int chuchu) {
+		for (Carros ca : this.CarrosList) {
+			if (ca.getId() == chuchu) {
+				this.CarrosList.remove(ca);
+				break;
+			}
+		}
+	}
+	
+	public void update(Carros carros) {
+		for (Carros ca : this.CarrosList) {
+			if (ca.getId() == carros.getId()) {
+				ca.setAno(carros.getAno());
+				ca.setModelo(carros.getModelo());
+				break;
+			}
+		}
+	}
+	
+	public Carros selectById(Integer id){
+		for (Carros ca : this.CarrosList) {
+			if (ca.getId() == id) {
+				return ca;
+			}
+		}
+		return null;
+	}
+	
+}

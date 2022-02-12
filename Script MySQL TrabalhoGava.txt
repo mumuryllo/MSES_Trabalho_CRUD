@@ -1,0 +1,21 @@
+create database TrabalhoGava;
+use TrabalhoGava;
+CREATE TABLE carros
+(
+ID							INT										NOT NULL				AUTO_INCREMENT,
+Ano									int(4)								NOT NULL,
+Modelo                       varchar(200),
+PRIMARY KEY								(ID)
+);
+CREATE TABLE ipva
+(
+idIPVA							INT										NOT NULL				AUTO_INCREMENT,
+AnoIPVA									int(4)								NOT NULL,
+PRIMARY KEY								(IDIPVA)
+);
+
+drop table ipva;
+drop table carros;
+
+
+	

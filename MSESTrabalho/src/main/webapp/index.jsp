@@ -24,25 +24,28 @@
 					<th scope="col">Id</th>
 					<th scope="col">Ano</th>
 					<th scope="col">Modelo</th>
+					<th scope="col">Acoes</th>
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach var="carro" items="${listCarros}">
+				<c:forEach var="carro" items="${listUser}">
 					<tr>
 						<form action="Controller" method="post">
-							<td>
+							 <td>
 								<c:out value="${carro.id}"/>
 								<input type="hidden" name="id" value="${carro.id}"/>
 							</td>
 							<td><c:out value="${carro.ano}"/></td>
 							<td><c:out value="${carro.modelo}"/></td>
-							<td><button class="btn btn-primary" type="submit" name="option" value="delete" style="margin-right: 10px;" >Deletar</button>
+							<td>
+							<button class="btn btn-primary" type="submit" name="option" value="delete" style="margin-right: 10px;" >Deletar</button>
                                 <button class="btn btn-primary" type="submit" name="option" value="updateForm">Atualizar</button>
                             </td>
 						</form>
 					</tr>
 				</c:forEach>
 			</tbody>
+
 		</table>
 </div>
 </body>
